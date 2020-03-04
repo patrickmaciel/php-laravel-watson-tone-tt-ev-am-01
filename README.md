@@ -23,6 +23,10 @@ Ainda na página inicial há uma tabela listando todas as frases cadastradas/ana
 - Bootstrap
 - FontAwesome
 
+### Pendências 😢
+
+- Docker-compose
+
 ---
 
 ## Pré-requisitos:
