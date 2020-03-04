@@ -17,6 +17,12 @@ Ainda na página inicial há uma tabela listando todas as frases cadastradas/ana
 - Services
 - Helpers
 
+### Recursos Específicos
+
+- Laravel Mix
+- Bootstrap
+- FontAwesome
+
 ---
 
 ## Pré-requisitos:
