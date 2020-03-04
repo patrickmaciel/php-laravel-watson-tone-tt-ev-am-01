@@ -50,7 +50,19 @@
                             <td>{{ $watson->sentence }}</td>
                             <td>{{ $watson->created_at->format('d/m/Y H:i:s') }}</td>
                             <td>
-                                <a href={{ route('watson.show', $watson->id) }} class="btn btn-sm btn-primary">Ver mais</a>
+                                <a href={{ route('watson.show', $watson->id) }} class="btn btn-sm btn-primary">
+                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                    Ver mais
+                                </a>
+
+                                <a href="#" class="btn btn-sm btn-danger delete-link">
+                                    <i class="fa fa-trash" aria-hidden="true"></i> Excluir
+                                </a>
+
+                                <form action="{{ route('watson.destroy', $watson->id) }}" method='POST'>
+                                    @csrf
+                                    @method('DELETE')
+                                </form>
                             </td>
                         </tr>
                     @empty
@@ -70,4 +82,20 @@
             </table>
         </div>
     </div>
+@endsection
+
+@section('javascript')
+    <script>
+        $(document).ready(function() {
+            $('.delete-link').click(function (event) {
+                event.preventDefault();
+
+                if (confirm('Tem certeza?')) {
+                    $(this).next('form').submit();
+                }
+
+                return;
+            })
+        });
+    </script>
 @endsection

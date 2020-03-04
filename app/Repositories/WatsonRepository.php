@@ -49,7 +49,7 @@ class WatsonRepository implements IRepository
 
     public function destroy($id)
     {
-        return WatsonResult::delete($id);
+        return WatsonResult::destroy($id);
     }
 
     public function find($id, $with = [])

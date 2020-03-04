@@ -1,7 +1,7 @@
 @if (session()->has('flash'))
     <div class="alert alert-{{ session('flash') }}" role="alert">
         {{ session('message') }}
-        @if (session()->has('excpetion'))
+        @if (session()->has('exception'))
         <br><p><strong>Exception: </strong>{{ session('exception') }}</p>
         @endif
 

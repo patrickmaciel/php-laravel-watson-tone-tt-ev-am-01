@@ -65,4 +65,21 @@ class WatsonController extends Controller
                 ->withInput();
         }
     }
+
+    public function destroy($id)
+    {
+        try {
+            $this->repository->destroy($id);
+
+            return redirect()->route('watson.index')
+                ->with('flash', 'success')
+                ->with('message', 'Frase excluída com sucesso!');
+        } catch (Exception $e) {
+            return back()
+                ->with('flash', 'danger')
+                ->with('message', 'Erro fatal!')
+                ->with('exception', $e->getMessage())
+                ->withInput();
+        }
+    }
 }
