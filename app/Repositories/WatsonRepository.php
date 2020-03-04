@@ -27,15 +27,24 @@ class WatsonRepository implements IRepository
     public function store($data)
     {
         $result = $this->watsonTone->analyze($data['sentence']);
-        $data['document_tone'] = $result['document_tone'];
-        $data['sentences_tone'] = $result['sentences_tone'];
+        $data['document_tone'] = $result->document_tone ?? null;
+        $data['sentences_tone'] = $result->sentences_tone ?? null;
+
         return WatsonResult::create($data);
     }
 
     public function update($data)
     {
-        return WatsonResult::where('id', $data['id'])
-            ->update($data);
+        $item = WatsonResult::findOrFail($data['id']);
+        $item->agreed = $data['agreed'] ?? false;
+
+        if (empty($item->document_tone)) {
+            $result = $this->watsonTone->analyze($item->sentence);
+            $item->document_tone = $result->document_tone ?? null;
+            $item->sentences_tone = $result->sentences_tone ?? null;
+        }
+
+        return $item->save();
     }
 
     public function destroy($id)

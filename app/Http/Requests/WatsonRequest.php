@@ -41,7 +41,7 @@ class WatsonRequest extends FormRequest
     private function store(): array
     {
         if (property_exists(WatsonResult::class, 'storeRequestRules')) {
-            $rules = (new Achievement())->storeRequestRules;
+            $rules = (new WatsonResult())->storeRequestRules;
         } else {
             // TODO: Implement store rules method.
 
@@ -57,7 +57,7 @@ class WatsonRequest extends FormRequest
     private function update(): array
     {
         if (property_exists(WatsonResult::class, 'updateRequestRules')) {
-            $rules = (new Achievement())->updateRequestRules;
+            $rules = (new WatsonResult())->updateRequestRules;
         } else {
             // TODO: Implement update rules method.
 
@@ -79,7 +79,7 @@ class WatsonRequest extends FormRequest
                 if (property_exists(WatsonResult::class, 'updateRequestMessages')) {
                     $messages = array_merge(
                         $messages,
-                        (new Achievement())->updateRequestMessages
+                        (new WatsonResult())->updateRequestMessages
                     );
                 }
                 break;
@@ -87,7 +87,7 @@ class WatsonRequest extends FormRequest
                 if (property_exists(WatsonResult::class, 'storeRequestMessages')) {
                     $messages = array_merge(
                         $messages,
-                        (new Achievement())->storeRequestMessages
+                        (new WatsonResult())->storeRequestMessages
                     );
                 }
                 break;
